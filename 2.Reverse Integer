@@ -1,0 +1,24 @@
+class Solution {
+    public int reverse(int x) {
+       String str = Integer.toString(x);
+        // Check for the negative sign
+        boolean isNegative = str.charAt(0) == '-';
+        
+        // Reverse the string
+        String reversedStr = isNegative ? "-" : "";
+        for (int i = str.length() - 1; i >= (isNegative ? 1 : 0); i--) {
+            reversedStr= reversedStr +  str.charAt(i);
+        }
+
+        // Convert the reversed string back to an integer
+        try {
+            return Integer.parseInt(reversedStr);
+        } catch (NumberFormatException e) {
+            // Return 0 in case of overflow
+            return 0;
+        }
+    }
+}
+
+/*Problem Statement*/
+/*Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.*/
